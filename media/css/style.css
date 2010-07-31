@@ -1,0 +1,142 @@
+body {
+  font-family:'Lucida Grande','Trebuchet MS','Sans Serif';
+  color:#000;
+  background-color:#fff;
+  margin:0;
+  padding:0;
+}
+
+h2 a {
+  color:#444;
+  text-decoration:none;
+}
+
+h2 a:hover {
+  color:#444;
+  text-decoration:underline;
+}
+
+ul.menu {
+}
+ul.menu li {
+  display:inline;
+  font-size:0.9em;
+}
+
+ul.menu li a {
+  color:#aaa;
+  text-decoration:none;
+}
+
+ul.menu li a:hover {
+  color:#aaa;
+  text-decoration:underline;
+}
+
+#header{
+  height:3em;
+  background-color:#000;
+  color:#fff;
+}
+
+#header h1 {
+  display:inline;
+}
+
+div.post-data {
+  text-align:right;
+}
+div#headline {
+  height:2em;
+  background-color:#ddd;
+  font-style:italic;
+}
+
+img.front {
+  margin-top:1em;
+  margin-bottom:-100px;
+}
+
+#sidebar {
+  color:#000;
+  background-color:#fff;
+}
+
+div#blog-block {
+  font-size:1em;
+}
+
+div#blog-block p a {
+  color:#555;
+}
+
+div#blog-block p a:visited {
+  color:#555;
+}
+
+p.title {
+  color:#612525;
+}
+div#login {
+  width:300px;
+}
+
+#pagecontent, #sidebar {
+  text-align:left;
+  margin-top:1em;
+}
+
+#footer-info {
+  margin-top:1em;
+  height:5em;
+  text-align:center;
+  background-color:#000;
+  color:#fff;
+  bottom:0px;
+  left:0px;
+  clear:both;
+  text-align: center;
+}
+table.schedule {
+  text-align:center;
+}
+tr.even {
+  background-color:#ddd;
+  color:#000;
+}
+
+table.schedule tr td {
+}
+table.schedule a {
+  color:#000;
+}
+ul.buttons {
+  display:block;
+}
+ul.buttons li {
+  display:inline;
+  background-color:black;
+}
+ul.buttons li a  {
+  color:white;
+  text-decoration:none;
+}
+
+div..blogposts {
+  font-size:0.8em;
+}
+
+.blogposts h4{
+  margin-bottom:0;
+}
+span.headline {
+  height:2em;
+  margin-left:1em;
+  position:relative;
+}
+div#menu {
+  text-align:right;
+}
+table tr td {
+  padding-top:10px;
+}

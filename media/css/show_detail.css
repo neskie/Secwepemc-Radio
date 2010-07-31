@@ -1,0 +1,19 @@
+.show-detail b{
+	width:300px;
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 10.0px;
+	margin-right: 10.0px;
+
+}
+
+.show-detail p{
+	width:300px;
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 10.0px;
+	margin-right: 10.0px;
+
+}
