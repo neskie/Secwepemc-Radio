@@ -1,0 +1,33 @@
+{%extends "base.html"%}
+{% block title %} Secwepemc Radio 91.1 FM - Schedule {%endblock%}
+{% block styles %}
+<link rel="stylesheet" type"text/css" href="{{ MEDIA_URL}}css/print-schedule.css" media="print">
+{% endblock %}
+{% block content %}
+<h1>Weekly Schedule</h1>
+<table class="schedule">
+<tr>
+<th>Time</th>
+<th><a href="browse/day/Sunday">Sunday</a></th>
+<th><a href="browse/day/Monday">Monday</a></th>
+<th><a href="browse/day/Tuesday">Tuesday</a></th>
+<th><a href="browse/day/Wednesday">Wednesday</a></th>
+<th><a href="browse/day/Thursday">Thursday</a></th>
+<th><a href="browse/day/Friday">Friday</a></th>
+<th><a href="browse/day/Saturday">Saturday</a></th>
+</tr>
+{% regroup object_list by hour as hour_list %}
+{% for hour in hour_list %}
+<tr class="{% cycle 'odd' 'even' %}">
+{% for item in hour.list %}
+{% if forloop.first %}
+<td class="time">{{item.get_hour_display}}</td>
+{% endif %}
+<td><a href="detail/{{item.show.slug}}">{{ item.show }}</a> </td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+{%endblock%}
+{% block sidebar-right%}
+{%endblock%}

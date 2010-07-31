@@ -1,0 +1,16 @@
+{%extends "weblog/base.html"%}
+{% block content %}
+{% for post in latest %}
+<h2>{{ post }}</h2>
+<p>{{ post.body }}</p>
+
+<div class="post-data">
+    <b>{{ post.author }}</b> wrote {{ post.body|wordcount }} words on
+    {{ post.pub_date|date }} at {{ post.pub_date|time }}
+    </div
+      
+{% endfor %}
+{% if not latest %}
+No Posts
+{% endif %}
+{%endblock%}

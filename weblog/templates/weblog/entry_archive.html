@@ -1,0 +1,31 @@
+{%extends "weblog/base.html"%}
+{% block title %}
+Weblog
+{% endblock %}
+{% block content %}
+{% for post in latest %}
+<h2><a href="{{post.pub_date|date:"Y/M/d"|lower}}/{{post.slug}}">{{ post }}</a></h2>
+{% load markup %}
+<p>{{ post.body|textile }}</p>
+
+<div class="post-data">
+    <b>{{ post.author }}</b> wrote {{ post.body|wordcount }} words on
+    {{ post.pub_date|date }} at {{ post.pub_date|time }}
+    </div
+      
+{% endfor %}
+{% if not latest %}
+No Posts
+{% endif %}
+{%endblock%}
+{% block archive %}
+
+<h2>Archive by Year</h2>
+
+{% for year in date_list%}
+<ul>
+	<li><a href="{{ year|date:"Y" }}">{{ year|date:"Y" }}</a></li>
+</ul>
+{% endfor %}
+
+{%endblock%}

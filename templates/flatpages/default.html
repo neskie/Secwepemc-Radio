@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+<title>{%block title%}{{ flatpage.title }}{%endblock%}</title>
+{% block content %}
+{% ifequal flatpage.url "/" %}
+<img class="front" width="480px" src="/media/images/header_eagle.png" />
+{% endifequal %}
+{% load markup %}
+{% load cache %}
+{% cache 600 body %}
+{{ flatpage.content|fix_ampersands|textile }}
+{% endcache %}
+{%endblock%}
+{% block sidebar-right %}
+<div id="blog-block">
+<p class="title">Weblog</p>
+{% load weblog_tags %}
+{% get_latest weblog.Entry 5 as latest %}
+{%for entry in latest %}
+<strong>{{entry}}</strong><br/>
+by {{ entry.author.first_name }} {{ entry.author.last_name }} on
+{{ entry.pub_date|date:"M d, Y"}}
+<p>
+{{entry.excerpt}}
+<a href="/weblog/{{entry.pub_date|date:"Y/M/d/"|lower}}{{entry.slug}}">Read More</a><br />
+</p>
+{%endfor%}
+</div>
+
+{{'_Check out the new Secwepemc Radio Language Site_ "here":http://language.secwepemcradio.ath.cx'|textile}}
+
+<div class="wordoftheday">
+	<em>Word of the Day</em>
+{% include "wordoftheday.html" %}
+</div>
+<div class="blogposts">
+{% load common_tags %}
+{% cache 1800 feed  %}
+<strong>Secwepemc News Feed</strong>
+{% pull_feed 'http://news.google.ca/news?pz=1&cf=all&ned=ca&hl=en&q=secwepemc&cf=all&output=rss' 3%}
+<br />
+<strong>Troy's Scribbles</strong>
+<a href="http://tscribbles.blogspot.com/">link</a>
+{% pull_feed 'http://tscribbles.blogspot.com/feeds/posts/default' 3 %}
+<br />
+<strong>Dominon Original Peoples</strong>
+<a href="http://www.dominionpaper.ca/section/original_peoples">link</a>
+{% pull_feed 'http://www.dominionpaper.ca/taxonomy/term/25/feed' 3 %}
+<br />
+{% endcache %}
+</div>
+
+{%endblock%}

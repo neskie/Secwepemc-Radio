@@ -1,0 +1,15 @@
+{%extends "weblog/base.html"%}
+{% block title %} Weblog - {{ object.title }} {% endblock %}
+{% block content %}
+<h2>{{ object }}</h2>
+{% load markup %}
+<p>{{ object.body|textile }}</p>
+
+<div class="post-data">
+    <b>{{ object.author }}</b> wrote {{ object.body|wordcount }} words on
+    {{ object.pub_date|date }} at {{ object.pub_date|time }}
+    </div>
+      
+{%endblock%}
+{% block archive %}
+{% endblock %}

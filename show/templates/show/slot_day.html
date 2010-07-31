@@ -1,0 +1,31 @@
+{%extends "show/base.html"%}
+{% block title %}
+Schedule
+{%endblock%}
+{% block content %}
+<ul class="buttons">
+{% for day in choices %}
+<li> <a href="{% url show.views.show_by_day day%}">{{day}}</a></li>
+{% endfor %}
+</ul>
+{% if dayofweek in choices %}
+<h1>{{dayofweek}}'s Schedule</h1>
+{% regroup object_list by hour as hour_list %}
+{% for hour in hour_list %}
+<ul class="{% cycle 'odd' 'even' %}">
+	{% for item in hour.list %}
+	{% if forloop.first %}
+	<li class="time">{{item.get_hour_display}}
+	{% endif %}
+	<a href="/show/detail/{{ item.show.slug }}">{{ item.show }}</a> </li>
+	{% endfor %}
+</ul>
+{% endfor %}
+{% else %}
+{{ dayofweek }} is not a day of the week.
+{% endif %}
+
+
+
+
+{%endblock%}

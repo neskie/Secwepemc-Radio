@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{% block title %}
+{{ object.name }}
+{%endblock%}
+{% block content %}
+
+<h1>{{ object.name }}</h1>
+<table>
+	<tr>
+	<th>Name</th>
+	<th>Artist</th>
+	<th>Title</th>
+	<th>Genre</th>
+	<th>Download</th>
+	</tr>
+	{% load cache %}
+	{% cache 60 "audio" %}
+<tr class="{% cycle 'odd' 'even' %}">
+<td class="time">{{ object.name }}</td>
+<td class="time">{% if object.metadata.artist %}{{object.metadata.artist|random}}{% endif %}</td>
+<td class="time">{% if object.metadata.title %}{{object.metadata.title|random}}{% endif %}</td>
+<td class="time">{% if object.metadata.genre %}{{object.metadata.genre|random}}{% endif %}</td>
+<td class="time"><a href="{{ MEDIA_URL }}{{ object.audiofile}}">Download</a></td>
+</tr>
+{% endcache %}
+</table>
+<object type="application/x-shockwave-flash" data="/media/flash/1pixelout.swf" width="290" height="24" > 
+  <param name="movie" value="/sites/all/modules/audio/players/1pixelout.swf" /> 
+  <param name="wmode" value="transparent" /> 
+  <param name="menu" value="false" /> 
+  <param name="quality" value="high" /> 
+  <param name="FlashVars" value="soundFile={{ MEDIA_URL }}{{object.audiofile|urlencode}}" /> 
+  <embed src="/media/flash/1pixelout.swf" flashvars="soundFile={{ MEDIA_URL }}{{object.audiofile|urlencode}}" width="290" height="24" /> 
+</object>
+
+
+{%endblock%}

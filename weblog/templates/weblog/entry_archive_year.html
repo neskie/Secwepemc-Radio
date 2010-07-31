@@ -1,0 +1,27 @@
+{%extends "weblog/base.html"%}
+{% block title %}
+Archive for the year {{year}}
+{% endblock %}
+{% block content %}
+{% for post in object_list %}
+<h2>{{ post }}</h2>
+{% load markup %}
+<p>{{ post.body|textile }}</p>
+
+<div class="post-data">
+    <b>{{ post.author }}</b> wrote {{ post.body|wordcount }} words on
+    {{ post.pub_date|date }} at {{ post.pub_date|time }}
+    </div
+      
+{% endfor %}
+{%endblock%}
+
+{% block archive %}
+<h2>Archive by Month</h2>
+
+{% for month in date_list%}
+<ul>
+	<li><a href="{{ month|date:"M"|lower }}">{{ month|date:"M" }}</a></li>
+</ul>
+{% endfor %}
+{%endblock%}

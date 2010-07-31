@@ -1,0 +1,8 @@
+{% extends "rb/base.html" %}
+{% block content %}
+We have {{ albums|length }} albums. <br/>
+{% for album in albums %}
+{% url rb.views.album_detail album as album_url %}
+<b><a href="{{ album_url|urlize }}">{{album}}</a></b><br/>
+{% endfor %}
+{% endblock %}

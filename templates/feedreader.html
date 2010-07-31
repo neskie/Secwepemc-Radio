@@ -1,0 +1,5 @@
+{% for post in posts %}
+<h4><a href="{{ post.link }}">{{post.title}}</a></h4><br/>
+{{post.date}}<br />
+{{post.summary|safe|truncatewords:30}}
+{% endfor %}

@@ -1,0 +1,9 @@
+{% extends "rb/base.html" %}
+{% block content %}
+
+{% for genre,counts in genres %}
+
+<b>{{ genre }}</b>&nbsp;-&nbsp;{{ counts }} <br/>
+{% endfor %}
+
+{% endblock %}

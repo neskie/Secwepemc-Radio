@@ -1,0 +1,11 @@
+{% extends "rb/base.html" %}
+{% block title %}{{ slug }} {% endblock %}
+{% block content %}
+<h1>{{slug }}</h1><br/>
+<ul>
+{% for track in album %}
+<li>{{ track.title }} - {{ track.artist }}, {{ track.play_count }} {{ track.last_played}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

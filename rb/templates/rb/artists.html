@@ -1,0 +1,9 @@
+{% extends "rb/base.html" %}
+{% block content %}
+
+{% for artist,counts in artists %}
+
+<b><a href="{{ artist|urlize }}">{{ artist }}</a></b>&nbsp;-&nbsp;{{ counts }} <br/>
+{% endfor %}
+
+{% endblock %}

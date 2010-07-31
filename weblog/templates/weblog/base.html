@@ -1,0 +1,17 @@
+{%extends "base.html"%}
+{% block content %}
+This is the Weblog
+{% endblock %}
+
+{% block sidebar-right %}
+
+{% block news %}
+<h2>News Sources</h2>
+{% include "news_sources.html" %}
+{% endblock %}
+
+{% block archive %}
+This is the Archive Block
+{% endblock %}
+
+{%endblock%}

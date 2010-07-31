@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{%block title%}Generic Title{%endblock%}</title>
+    <link rel="stylesheet" type="text/css" href="/media/css/14653.css" />
+    <link rel="stylesheet" type="text/css" href="/media/css/style.css" />
+{% block styles %}
+{% endblock %}
+
+  </head>
+  <body>
+                    
+
+    <div id="header" class="container_12">
+
+      <div id="header-wrapper" class="grid_12 ">
+
+
+        <div id="site-title" class="grid_4 alpha">
+<h1>Secwepemc Radio 91.1 FM</h1>
+        </div>
+
+        <div style="margin-left:-70px;" id="menu" class="grid_8 omega">
+<ul class="menu">
+<li class="leaf first active-trail"><a href="/" title="" class="active">Welcome</a></li> 
+<li class="leaf"><a href="/about" title="About">About</a></li> 
+<li class="leaf"><a href="/show" title="Schedule">Schedule</a></li> 
+<li class="leaf"><a href="/weblog" title="Secwepemc Radio Blogs">Weblog</a></li> 
+<li class="leaf"><a href="/audio" title="Audio">Audio</a></li> 
+{% if user.is_anonymous %}
+<li class="leaf"><a href="/accounts/login" title="Login">Login</a></li> 
+{% endif %}
+{% if user.is_authenticated %}
+{% if user.is_superuser %}
+<li class="collapsed last"><a href="/admin">Admin</a></li> 
+{% endif %}
+<li class="leaf"><a href="/accounts/logout" title="Logout">Logout</a></li> 
+{% endif %}
+</ul> 
+        </div>
+
+      </div>
+    </div>
+    <div id="headline" class="container_12">
+      <span class="headline">Secwepemc News for Secwepemc People</span>
+    </div>
+                    
+
+    <div id="content" class="container_12">
+
+      <div id="pagecontent" class="grid_12 ">
+{% block content %}
+This is the Content
+{%endblock%}
+      </div>
+      {% block sidebar-right %}
+{% endblock %}
+
+    </div>
+
+                    
+
+    <div id="footer" class="container_12">
+
+      <div id="footer-info" class="grid_12">
+{% block footer %}
+<p>Copyleft 2010.</p>
+<a href="http://www.djangoproject.com/"><img
+  src="http://media.djangoproject.com/img/badges/djangojoint107x25_grey.gif"
+   alt="A Django joint." title="A Django joint." /></a>
+{%endblock%}
+
+      </div>
+
+    </div>
+
+                
+  </body>
+</html>

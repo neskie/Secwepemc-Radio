@@ -1,0 +1,22 @@
+{%extends "weblog/base.html"%}
+{% block title %}
+Archive for  {{day}}
+{% endblock %}
+{% block content %}
+{% for post in object_list %}
+<h2>{{ post }}</h2>
+{% load markup %}
+<p>{{ post.body|textile }}</p>
+
+<div class="post-data">
+    <b>{{ post.author }}</b> wrote {{ post.body|wordcount }} words on
+    {{ post.pub_date|date }} at {{ post.pub_date|time }}
+    </div
+      
+{% endfor %}
+{% if not latest %}
+No Posts
+{% endif %}
+{%endblock%}
+{% block archive %}
+{%endblock%}

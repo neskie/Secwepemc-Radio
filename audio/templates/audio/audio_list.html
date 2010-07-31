@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+{% block title %}
+Schedule
+{%endblock%}
+{% block sidebar-right %}
+{%endblock %}
+{% block content %}
+
+<h1>Podcast</h1>
+<table>
+	<tr>
+	<th class="time">Name</th>
+	<th class="time">Artist</th>
+	<th class="time">Title</th>
+	<th class="time">Genre</th>
+	<th class="time">Download</th>
+	</tr>
+	{% load cache %}
+	{% cache 60 "podcasts" %}
+{% for object in object_list %}
+<tr class="{% cycle 'odd' 'even' %}">
+	<td><a href="detail/{{object.id}}">{{ object.name }}</a></td>
+	<td>{% if object.metadata.artist %}{{object.metadata.artist|random}}{% endif %}</td>
+	<td>{% if object.metadata.title %}{{object.metadata.title|random}}{% endif %}</td>
+	<td>{% if object.metadata.genre %}{{object.metadata.genre|random}}{% endif %}</td>
+	<td><a href="{{ MEDIA_URL }}{{ object.audiofile}}">Download</a></td>
+</tr>
+{% endfor %}
+{% endcache %}
+</table>
+
+
+
+<p>
+<a href="latest/feed"><img style="width:25px;" src="/media/images/rss-icon.gif" alt="RSS"
+	title="RSS"/></a>
+</p>
+{%endblock%}

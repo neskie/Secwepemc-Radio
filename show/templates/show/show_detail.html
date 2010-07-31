@@ -1,0 +1,33 @@
+{%extends "show/base.html"%}
+{% block title %}
+{{ object }} on Secwepemc Radio
+{% endblock %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="/media/css/show_detail.css" />
+{% endblock %}
+{% block content %}
+<h2 class="grid_6 alpha">{{ object }}</h2>
+{% if object.syndicated %}<p class="grid_2 omega">Syndicated</p> {% endif %} 
+<br/>
+{% load markup %}
+<div class="show">
+<b class='grid_2'>Host:</b> <p class='grid_5'>{{ object.host }}<p>
+<b class='grid_2'>Url:</b> <p class='grid_5'><a href="{{ object.url }}">{{ object.url }}</a></p> <br/>
+<b class='grid_2'>Time:</b>
+{% regroup object.slot_set.all by dayofweek as dow_list %}
+<p class='grid_5'>
+{% for dayofweek in dow_list %}
+	{% for item in dayofweek.list %}
+	 {{item.get_hour_display}}
+	 {% if not forloop.last %}
+	 ,
+	 {% endif %}
+
+	 {% if forloop.last %}
+	 on {{item.get_dayofweek_display}}<br />
+	 {% endif %}
+	{% endfor %}
+{% endfor %}
+</p>
+</div>
+{% endblock %}

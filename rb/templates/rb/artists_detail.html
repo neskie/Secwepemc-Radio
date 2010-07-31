@@ -1,0 +1,21 @@
+{% extends "rb/base.html" %}
+{% block title %}{{ slug }} {% endblock %}
+{% block content %}
+<h1>{{slug }}</h1><br/>
+{% load cache %}
+{% regroup artist_songs by album as album_list %}
+
+<ul>
+{% for album in album_list %}
+<li><a href="{% url rb.views.album_detail album.grouper %}">{{ album.grouper }}</a>
+    <ul>
+	            {% for item in album.list %}
+		    <li>{{ item.title }} - {{ item.duration }}, {{ item.last_played }} </li>
+		    {% endfor %}
+				        </ul>
+					</li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}
