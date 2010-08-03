@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     (r'^weblog/', include('weblog.urls')),
     (r'^show/', include('show.urls')),
     (r'^audio/', include('audio.urls')),
+    (r'^events/', include('events.urls')),
     (r'^rb/', include('rb.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 

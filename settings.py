@@ -93,4 +93,5 @@ INSTALLED_APPS = (
     'nations',
     'audio',
     'rb',
+    'events',
 )
