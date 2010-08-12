@@ -6,6 +6,7 @@
     <title>{%block title%}Generic Title{%endblock%}</title>
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/14653.css" />
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/buttons.css" />
     <link rel="stylesheet" type="text/css" media="handheld" href="{{ MEDIA_URL }}css/smallscreen.css " />
    
   {% block styles %}
@@ -46,6 +47,10 @@
     </div>
     <div id="headline" class="container_12">
       <span class="headline">Secwepemc News for Secwepemc People</span>
+    </div>
+    <div id="categories" class="container_12">
+  {% load tree_menu_tags %}
+  {% show_menu "main"%}
     </div>
                     
 

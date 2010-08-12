@@ -1,4 +1,5 @@
 from django.contrib import admin
+from tagging.models import *
 from radio.weblog.models import Entry
 
 class EntryAdmin(admin.ModelAdmin):

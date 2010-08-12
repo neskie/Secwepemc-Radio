@@ -1,4 +1,6 @@
 from django.conf.urls.defaults import *
+from tagging.models import *
+from tagging.forms import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -35,8 +37,6 @@ urlpatterns = patterns('',
     (r'^accounts/login/$', 'django.contrib.auth.views.login',),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout',{'next_page':'/'}),
     (r'^comments/', include('django.contrib.comments.urls')),
-    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
-
-
+    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
 )

@@ -6,14 +6,16 @@
 {% endifequal %}
 {% load markup %}
 {% load cache %}
+{% cache 600 body %}
 {{ flatpage.content|fix_ampersands|textile }}
+{% endcache %}
 {% ifequal flatpage.url "/" %}
 {% load weblog_tags %}
 <div class="grid_4">
 <h3>Upcoming Events</h3>
 {% get_latest events.Event 5 as latest %}
 {%for entry in latest %}
-<strong><span class="button black small">{{entry.start|date:"M d"}}<br/>{{entry.start|date:"Y"}}</span> <a
+<strong>{{entry.start|date:"M d, Y"}} - <a
 		href="{{entry.get_absolute_url}}">{{entry}}</a></strong><br/>
 {%endfor%}
 </div>

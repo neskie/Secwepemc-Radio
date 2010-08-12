@@ -2,8 +2,8 @@ from django.template import Library, Node
 from django.template.defaultfilters import stringfilter
 from django.db.models import get_model
 from django.utils.safestring import mark_safe
-
 from weblog.models import Entry
+from events.models import Event
 import random
      
 register = Library()
@@ -16,6 +16,8 @@ class LatestContentNode(Node):
     def render(self, context):
         if self.model == Entry:
             context[self.varname] = self.model._default_manager.filter(status=1)[:self.num]
+        elif self.model == Event:
+            context[self.varname] = self.model._default_manager.all().order_by('start')[:self.num]
         else:
             context[self.varname] = self.model._default_manager.all()[:self.num]
         return ''

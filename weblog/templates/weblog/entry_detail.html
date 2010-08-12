@@ -1,6 +1,10 @@
 {%extends "weblog/base.html"%}
 {% block title %} Weblog - {{ object.title }} {% endblock %}
 {% block content %}
+    {% if user.is_superuser %}
+    <a href="/admin/tagging/taggeditem/add/?object_id={{object.id}}&content_type=10"> Add a Tag
+    </a>
+    {% endif %}
 <h2>{{ object }}</h2>
 {% load markup %}
 <p>{{ object.body|textile }}</p>
