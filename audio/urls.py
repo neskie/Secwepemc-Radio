@@ -3,7 +3,7 @@ from audio.models import *
 from audio.feeds import LatestAudioFeed
 
 info_dict = {
-    'queryset': Audio.objects.all()
+    'queryset': Audio.objects.all().order_by('-pub_date')
 }
 
 urlpatterns = patterns('',
