@@ -5,3 +5,4 @@ local_settings.py
 media/admin*
 media/files*
 media/current*
+rb/db.dump
