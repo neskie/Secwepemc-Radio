@@ -42,8 +42,6 @@ MEDIA_URL = 'http://secwepemcradio.ath.cx/media/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '0@s5qd0lti)*)ezk0lj$b3+nyahkt)vio)5z0sn)xoiomieq=z'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -94,4 +92,5 @@ INSTALLED_APPS = (
     'audio',
     'rb',
     'events',
+    'treemenus',
 )
