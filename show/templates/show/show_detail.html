@@ -11,7 +11,11 @@
 <br/>
 {% load markup %}
 <div class="show">
+{% ifequal object.host "computer"%}
+<b class='grid_2'>Host:</b> <p class='grid_5'>Automatically Generated Playlist<p>
+{% else %}
 <b class='grid_2'>Host:</b> <p class='grid_5'>{{ object.host }}<p>
+{% endifequal %}
 <b class='grid_2'>Url:</b> <p class='grid_5'><a href="{{ object.url }}">{{ object.url }}</a></p> <br/>
 <b class='grid_2'>Time:</b>
 {% regroup object.slot_set.all by dayofweek as dow_list %}
