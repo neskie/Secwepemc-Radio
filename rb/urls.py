@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     (r'^player/pause/$','rb.views.pause'),
     (r'^artists/(?P<slug>[\w\W]+)/$' ,'rb.views.artists_detail'),
     (r'^albums/(?P<slug>[\w\W]+)/$' ,'rb.views.album_detail'),
-    (r'^player/$', 'django.views.generic.simple.direct_to_template',
+    (r'^player/$', login_required(direct_to_template),
         {'template': 'rb/player.html'}),
 )
 
