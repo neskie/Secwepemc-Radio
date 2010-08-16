@@ -4,6 +4,8 @@ from show.models import *
 from django.core import serializers
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
+from django.template import RequestContext
+from django.template import loader
 from show.models import *
 from RhythmDB import *
 from django.views.decorators.cache import cache_page
@@ -11,7 +13,8 @@ import cPickle as pickle
 from django.contrib.auth.decorators import login_required
 from rb.settings import *
 import os
-
+import socket
+import paramiko
 
 f = open(DB_FILE)
 
@@ -76,7 +79,7 @@ def album_detail(request, slug):
     context= {
         'album': album,
         'slug': slug
-            }
+    }
 
     return object_list(request,
             queryset=Show.objects.none(),template_name='rb/album_detail.html',
@@ -97,3 +100,23 @@ def next(request):
     os.system("ssh -i %s -p %s %s@%s 'source init_dbus.sh; rhythmbox-client --next'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
     return HttpResponseRedirect('/rb/player/')
 
+@login_required
+def player(request):
+    ip = socket.gethostbyaddr(REMOTE_HOST)[-1][0]
+    ip = socket.gethostbyaddr('secpewt.local')[-1][0]
+    ssh = paramiko.SSHClient()
+    ssh.set_missing_host_key_policy(
+                paramiko.AutoAddPolicy())
+    ssh.connect(ip,
+                key_filename=IDENTITY_FILE,
+                username=USER,
+                password='')
+    a,b,c = ssh.exec_command(
+        'source init_dbus.sh 2&>/dev/null; rhythmbox-client --print-playing')
+
+    t = loader.get_template('rb/player.html')
+    c  = RequestContext(request,
+            {
+                'current_track': b.read().strip(),
+            })
+    return HttpResponse(t.render(c))

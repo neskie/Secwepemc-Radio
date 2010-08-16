@@ -10,9 +10,8 @@ urlpatterns = patterns('',
     (r'^player/play/$','rb.views.play'),
     (r'^player/next/$','rb.views.next'),
     (r'^player/pause/$','rb.views.pause'),
+    (r'^player/$','rb.views.player'),
     (r'^artists/(?P<slug>[\w\W]+)/$' ,'rb.views.artists_detail'),
     (r'^albums/(?P<slug>[\w\W]+)/$' ,'rb.views.album_detail'),
-    (r'^player/$', login_required(direct_to_template),
-        {'template': 'rb/player.html'}),
 )
 

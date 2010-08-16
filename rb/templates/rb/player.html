@@ -2,19 +2,34 @@
 {% block title %}Secwepemc Radio Player{% endblock %}
 {% block content %}
 <h2>Player</h2>
+<p>
+This player is only for super user admin staff, marked as staff.  You can
+create a player.  If you click next you can't go back, and why would want to
+go back anyways?  You should always look forward.  There is a lag time.
+</p>
+
+<p>
+<strong>Note:</strong>
+</p>
 
 <a href="{% url rb.views.play %}">
 <img alt="Play" src="{{ MEDIA_URL }}images/player/gtk-media-play-ltr.png" />
-</a><br />
+</a>
 <a href="{% url rb.views.next %}">
 <img alt=Next" src="{{ MEDIA_URL }}images/player/gtk-media-next-ltr.png" />
-</a><br />
+</a>
 <a href="{% url rb.views.pause %}">
 <img alt=Pause" src="{{ MEDIA_URL }}images/player/gtk-media-pause-ltr.png" />
-</a><br />
+</a>
 {% endblock %}
 {% block sidebar-right %}
-Browse by
+<h4>Currently Playing</h4>
+{% load cache %}
+{% cache 60 "current_track" %}
+{{ current_track }}
+{% endcache %} 
+
+<h4>Browse by</h4>
 
 <ul>
 <li><a href="{% url rb.views.genres %}">Genres</a></li>
