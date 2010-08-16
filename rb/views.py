@@ -103,7 +103,6 @@ def next(request):
 @login_required
 def player(request):
     ip = socket.gethostbyaddr(REMOTE_HOST)[-1][0]
-    ip = socket.gethostbyaddr('secpewt.local')[-1][0]
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(
                 paramiko.AutoAddPolicy())
