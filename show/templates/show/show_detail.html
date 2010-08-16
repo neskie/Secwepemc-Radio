@@ -11,7 +11,7 @@
 <br/>
 {% load markup %}
 <div class="show">
-{% ifequal object.host "computer"%}
+{% ifequal object.host.username "computer"%}
 <b class='grid_2'>Host:</b> <p class='grid_5'>Automatically Generated Playlist<p>
 {% else %}
 <b class='grid_2'>Host:</b> <p class='grid_5'>{{ object.host }}<p>
