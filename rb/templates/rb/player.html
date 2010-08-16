@@ -3,17 +3,23 @@
 {% block content %}
 <h2>Player</h2>
 
-<a href="{% url rb.views.play %}">Play</a><br />
-<a href="{% url rb.views.next %}">Next</a><br />
-<a href="{% url rb.views.pause %}">Pause</a><br />
+<a href="{% url rb.views.play %}">
+<img alt="Play" src="{{ MEDIA_URL }}images/player/gtk-media-play-ltr.png" />
+</a><br />
+<a href="{% url rb.views.next %}">
+<img alt=Next" src="{{ MEDIA_URL }}images/player/gtk-media-next-ltr.png" />
+</a><br />
+<a href="{% url rb.views.pause %}">
+<img alt=Pause" src="{{ MEDIA_URL }}images/player/gtk-media-pause-ltr.png" />
+</a><br />
 {% endblock %}
 {% block sidebar-right %}
 Browse by
 
 <ul>
-	<li><a href="{% url rb.views.genres %}">Genres</a></li>
-	<li><a href="{% url rb.views.artists %}">Artists</a></li>
-	<li><a href="{% url rb.views.albums %}">Albums</a></li>
+<li><a href="{% url rb.views.genres %}">Genres</a></li>
+<li><a href="{% url rb.views.artists %}">Artists</a></li>
+<li><a href="{% url rb.views.albums %}">Albums</a></li>
 </ul>
 
 {% endblock %}
