@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Player</h2>
+
+<a href="{% url rb.views.play %}">Play</a><br />
+<a href="{% url rb.views.next %}">Next</a><br />
+<a href="{% url rb.views.pause %}">Pause</a><br />
+{% endblock %}
+{% block sidebar-right %}
+Browse by
+
+<ul>
+	<li><a href="{% url rb.views.genres %}">Genres</a></li>
+	<li><a href="{% url rb.views.artists %}">Artists</a></li>
+	<li><a href="{% url rb.views.albums %}">Albums</a></li>
+</ul>
+
+{% endblock %}
