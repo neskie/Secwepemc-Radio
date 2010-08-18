@@ -87,17 +87,17 @@ def album_detail(request, slug):
 
 @login_required
 def play(request):
-    os.system("ssh -i %s -p %s %s@%s 'source init_dbus.sh; rhythmbox-client --play'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
+    os.system("ssh -i %s -p %d %s@%s 'source init_dbus.sh; rhythmbox-client --play'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
     return HttpResponseRedirect('/rb/player/')
 
 @login_required
 def pause(request):
-    os.system("ssh -i %s -p %s %s@%s 'source init_dbus.sh; rhythmbox-client --pause'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
+    os.system("ssh -i %s -p %d %s@%s 'source init_dbus.sh; rhythmbox-client --pause'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
     return HttpResponseRedirect('/rb/player/')
 
 @login_required
 def next(request):
-    os.system("ssh -i %s -p %s %s@%s 'source init_dbus.sh; rhythmbox-client --next'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
+    os.system("ssh -i %s -p %d %s@%s 'source init_dbus.sh; rhythmbox-client --next'" % (IDENTITY_FILE, PORT, USER, REMOTE_HOST))
     return HttpResponseRedirect('/rb/player/')
 
 @login_required
@@ -109,6 +109,7 @@ def player(request):
     ssh.connect(ip,
                 key_filename=IDENTITY_FILE,
                 username=USER,
+                port=PORT,
                 password='')
     a,b,c = ssh.exec_command(
         'source init_dbus.sh 2&>/dev/null; rhythmbox-client --print-playing')
