@@ -26,6 +26,7 @@ def json_schedule(request):
 
 def json_shows(request):
     json = serializers.serialize("json", Show.objects.all())
+    json = json[:-1]+', '+serializers.serialize("json", Slot.objects.all())[1:]
     return HttpResponse(json, mimetype='application/json')
 
 def json_show(request,hour,dayofweek):
