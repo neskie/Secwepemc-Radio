@@ -1,7 +1,7 @@
 # Django settings for radio project.
 import os
 from local_settings import *
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_ROOT = '/srv/apache/django-projects/radio/media/'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -28,7 +28,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'radio.urls'
 TEMPLATE_DIRS = (
-	os.path.join(PROJECT_ROOT, 'templates/')
+#	os.path.join(PROJECT_ROOT, 'templates/'),
+	'/srv/apache/django-projects/radio/templates/',
 )
 
 INSTALLED_APPS = (
