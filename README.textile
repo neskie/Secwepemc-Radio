@@ -1,0 +1,8 @@
+Secwepemc Radio Website
+
+This is the code for the Secwepemc Radio website.
+
+Interesting features include:
+
+ * ability to read a Rhythmbox XML DB
+ * playout controllerfor a Rhythmbox system
