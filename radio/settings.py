@@ -1,7 +1,8 @@
 # Django settings for radio project.
 import os
 from local_settings import *
-MEDIA_ROOT = '/srv/apache/django-projects/radio/media/'
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,7 +12,7 @@ LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-MEDIA_URL = 'http://secwepemcradio.ath.cx/media/'
+MEDIA_URL = 'http://secwepemcradio.ath.cx:8001/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -28,8 +29,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'radio.urls'
 TEMPLATE_DIRS = (
-#	os.path.join(PROJECT_ROOT, 'templates/'),
-	'/srv/apache/django-projects/radio/templates/',
+    os.path.join(PROJECT_ROOT, 'templates/'),
 )
 
 INSTALLED_APPS = (
